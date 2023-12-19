@@ -1,5 +1,5 @@
 # Change baseurl before deploy
-baseurl = "https://demo.stack.jimmycai.com"
+baseurl = "https://Soraruholic.github.io"
 languageCode = "en-us"
 paginate = 5
 title = "Hugo Theme Stack Starter"
@@ -13,4 +13,4 @@ defaultContentLanguage = "en"
 hasCJKLanguage = false
 
 # Change it to your Disqus shortname before using
-disqusShortname = "hugo-theme-stack"
+# disqusShortname = "hugo-theme-stack"
