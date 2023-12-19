@@ -27,7 +27,7 @@ icon = "brand-twitter"
 [[social]]
 identifier = "envelope"
 name = "Email"
-url = "mailto:mafuholic@gmail.com"
+url = "mailto:mafuholic@gmail.com" 
 
 [social.params]
 icon = "brand-envelope"
