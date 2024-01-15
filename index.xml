@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mafuholic's Blog</title><link>https://Soraruholic.github.io/</link><description>Recent content on Mafuholic's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://Soraruholic.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Jan 15 2024 LeetCode Daily</title><link>https://Soraruholic.github.io/p/leetcode-daily-24-01-15/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/leetcode-daily-24-01-15/</guid><description>&lt;img src="https://Soraruholic.github.io/p/leetcode-daily-24-01-15/1.png" alt="Featured image of post Jan 15 2024 LeetCode Daily" />&lt;h2 id="解法一可读性">解法一(可读性):&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Solution&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">deleteDuplicates&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Special Case 1: Empty List
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">head&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Special Case 2: Only One Element (No Duplicates)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">head&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Special Case 3: Two Elements (Return Either None or Self)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">head&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">head&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Initialzing pointers
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">pseudo_head&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ListNode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">777&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">last_different&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pseudo_head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">candidate&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">preception&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">candidate&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Initializing the indicator
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">indicator&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">candidate&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">?&lt;/span> &lt;span class="n">candidate&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="nl">val&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">777&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Setting end-loop condition
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">preception&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">nullptr&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">candidate&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">nullptr&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">candidate&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">indicator&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Deleting duplicates
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">candidate&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">indicator&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// duplicate_head = indicator == head-&amp;gt;val;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">last_different&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">candidate&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">preception&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preception&lt;/span> &lt;span class="o">?&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="nl">next&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">last_different&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">candidate&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">candidate&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">preception&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Updating indicator
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">preception&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">nullptr&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">candidate&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">indicator&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preception&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">pseudo_head&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="解法二简洁">解法二(简洁):&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Solution&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">deleteDuplicates&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Special Case: Empty List
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">head&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Initialzing pointers
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">pseudo_head&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ListNode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">777&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">cur&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pseudo_head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">nullptr&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">idx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">nullptr&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">idx&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cur&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cur&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">pseudo_head&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>2.1 基本内置类型</title><link>https://Soraruholic.github.io/p/cpp-11-primer-2-1/</link><pubDate>Tue, 19 Dec 2023 00:01:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/cpp-11-primer-2-1/</guid><description>&lt;img src="https://Soraruholic.github.io/p/cpp-11-primer-2-1/1.png" alt="Featured image of post 2.1 基本内置类型" />&lt;h2 id="基本内置类型">基本内置类型&lt;/h2>
+&lt;h3 id="算术类型">算术类型&lt;/h3>
+&lt;p>两类算术类型：&lt;/p>
+&lt;ul>
+&lt;li>整型：字符，布尔，整型(有符号、无符号)，长整型，&amp;hellip;&lt;/li>
+&lt;li>浮点型：单精度、双精度、扩展精度，&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>长整型 long long在Cpp11中新定义&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="类型转换">类型转换&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>非布尔类型&lt;/strong>的算术值赋给&lt;strong>布尔类型&lt;/strong>：&lt;code>0 -&amp;gt; false, otherwise -&amp;gt; true&lt;/code>&lt;/li>
+&lt;li>&lt;strong>布尔类型&lt;/strong>转&lt;strong>非布尔类型&lt;/strong>：&lt;code>false -&amp;gt; 0, true -&amp;gt; 1&lt;/code>&lt;/li>
+&lt;li>&lt;strong>浮点数&lt;/strong>赋给&lt;strong>整数&lt;/strong>：仅保留小数点之前的部分&lt;/li>
+&lt;li>&lt;strong>整数&lt;/strong>赋给&lt;strong>浮点数&lt;/strong>：小数部分记为0，有精度损失风险&lt;/li>
+&lt;li>超过范围的数赋给&lt;strong>无符号&lt;/strong>：对能表示的最大值取模&lt;/li>
+&lt;li>超过范围的数赋给&lt;strong>有符号&lt;/strong>：&lt;strong>未定义&lt;/strong>行为&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>在表达式中，有符号数遇到无符号数会自动转化为无符号数。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="字面值常量">字面值常量&lt;/h3>
+&lt;h4 id="整型与浮点型字面值">整型与浮点型字面值：&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>整型&lt;/strong>：&lt;strong>十进制&lt;/strong>、&lt;strong>八进制&lt;/strong>(&lt;code>0&lt;/code>开头)、&lt;strong>十六进制&lt;/strong>(&lt;code>0x&lt;/code>或&lt;code>0X&lt;/code>开头)。&lt;/li>
+&lt;li>默认情形下，十进制字面值是&lt;strong>带符号整型&lt;/strong>，八/十六进制&lt;strong>未定&lt;/strong>。前提是当前类型可以&lt;strong>容纳该数值&lt;/strong>(最小为&lt;code>int&lt;/code>，因此不存在&lt;code>short&lt;/code>类型的整型字面值)。&lt;/li>
+&lt;li>十进制不会是负数：&lt;code>-12&lt;/code>表示对字面值&lt;code>12&lt;/code>取负值。&lt;/li>
+&lt;li>&lt;strong>浮点数&lt;/strong>：小数或者科学计数法表示的小数，指数部分用&lt;code>E&lt;/code>或者&lt;code>e&lt;/code>表示，默认为&lt;code>double&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;h4 id="字符和字符串字面值">字符和字符串字面值&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>字符串字面值&lt;/strong>是常量字符构成的数组，结尾处由编译器添加一个空字符&lt;code>\0&lt;/code>。&lt;/li>
+&lt;li>如果两个字符串字面值位置紧邻，且仅由空格、缩进和换行符分隔，则&lt;strong>整体视为一个字符串字面值&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;h4 id="转义序列">转义序列&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>不能直接使用&lt;/strong>的字符：不可打印字符和特殊含义字符(&lt;code>', &amp;quot;, ?, \&lt;/code>)&lt;/li>
+&lt;li>&lt;strong>泛化转义&lt;/strong>序列：
+&lt;ul>
+&lt;li>&lt;code>\x&lt;/code>后紧跟一个或者多个&lt;strong>十六进制数字&lt;/strong>：字符大小取决于所包含的十六进制数对应的比特数(超过&lt;code>char&lt;/code>大小直接使用可能报错)，通常与前缀一同使用。&lt;/li>
+&lt;li>&lt;code>\&lt;/code>后紧跟1~3个&lt;strong>八进制数字&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="指定字面值的类型">指定字面值的类型&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="sa">L&lt;/span>&lt;span class="sc">&amp;#39;a&amp;#39;&lt;/span> &lt;span class="c1">// 宽字符型字面值(wchar_t)，2或4字节大小
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="sa">u8&lt;/span>&lt;span class="s">&amp;#34;hi!&amp;#34;&lt;/span> &lt;span class="c1">// utf-8字符串字面值，每个Unicode大小为8位
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="mf">3.1415926&lt;/span>&lt;span class="n">L&lt;/span> &lt;span class="c1">// 扩展精度浮点数字面值(long double)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 无符号整型字面值(unsigned long long)，U/u表示无符号，LL/ll表示long long，L/l表示long
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="mi">42ULL&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="布尔字面值和指针字面值">布尔字面值和指针字面值&lt;/h4>
+&lt;ul>
+&lt;li>布尔字面值：&lt;code>true&lt;/code>与&lt;code>false&lt;/code>&lt;/li>
+&lt;li>指针字面值：&lt;code>nullptr&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>​&lt;/p></description></item><item><title>2.3 复合类型</title><link>https://Soraruholic.github.io/p/cpp-11-primer-2-3/</link><pubDate>Tue, 19 Dec 2023 00:01:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/cpp-11-primer-2-3/</guid><description>&lt;img src="https://Soraruholic.github.io/p/cpp-11-primer-2-3/1.png" alt="Featured image of post 2.3 复合类型" />&lt;h2 id="复合类型">复合类型&lt;/h2>
+&lt;p>主要分析两种复合类型：&lt;strong>引用&lt;/strong>和&lt;strong>指针&lt;/strong>。&lt;/p>
+&lt;h3 id="引用">引用&lt;/h3>
+&lt;ul>
+&lt;li>引用等价于为对象起了&lt;strong>别名&lt;/strong>，通过将声明符写作&lt;code>&amp;amp;variable&lt;/code>的形式来定义引用类型。&lt;/li>
+&lt;li>定义引用时，&lt;strong>初始值与引用绑定在一起&lt;/strong>，而不是将初始值拷贝到新建的引用中。&lt;/li>
+&lt;li>引用必须&lt;strong>初始化&lt;/strong>，并且一旦引用完成初始化，便&lt;strong>无法&lt;/strong>与另一个对象重新绑定。&lt;/li>
+&lt;/ul>
+&lt;h4 id="引用即别名">引用即别名&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>引用不是一个对象&lt;/strong>，所有对引用的操作都是在与之绑定的对象上进行。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">v&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1024&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">ref&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">v&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 正确，v的值与ref进行绑定
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">ref2&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 错误，引用必须初始化
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ref&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 等同于 &amp;#34;v = 2;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">v2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ref&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 等同于 &amp;#34;int v2 = v;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">ref2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ref&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 等同于 &amp;#34;int &amp;amp;ref2 = v;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>不能定义引用的引用&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">v&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 错误，不能引用未分配内存的对象，即不能定义引用的引用
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="引用的定义">引用的定义&lt;/h4>
+&lt;ul>
+&lt;li>允许一条语句中定义多个引用，但每个引用必须以&lt;code>&amp;amp;&lt;/code>开头。&lt;/li>
+&lt;li>除部分特例，&lt;strong>引用的类型须与其绑定的对象严格匹配&lt;/strong>。&lt;/li>
+&lt;li>引用只能绑定在对象上，不能是字面值或者表达式结果。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">i1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1024&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2048&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">r1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">i1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">r2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">i2&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 声明r2引用时必须用&amp;amp;开头
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">r3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 错误，引用只能与对象绑定，不能是字面值
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">double&lt;/span> &lt;span class="n">f1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">3.14&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">r4&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">f1&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 错误，引用的类型必须和绑定的对象保持一致
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="指针">指针&lt;/h4>
+&lt;ul>
+&lt;li>定义指针类型将声明符写成&lt;code>*variable&lt;/code>的形式，如果在一个语句中定义多个指针，则每个指针变量都以&lt;code>*&lt;/code>开头。&lt;/li>
+&lt;li>在&lt;strong>块作用域&lt;/strong>内定义的指针如果未初始化，则是&lt;strong>未定义&lt;/strong>的。&lt;/li>
+&lt;li>指针和引用都能提供对其他对象的&lt;strong>间接访问&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;h4 id="指针与引用的区别">指针与引用的区别&lt;/h4>
+&lt;ul>
+&lt;li>指针本身就是一个&lt;strong>对象&lt;/strong>，引用不是。&lt;/li>
+&lt;li>指针在生命周期内可以&lt;strong>先后指向不同对象&lt;/strong>，引用则只能与对象绑定一次。&lt;/li>
+&lt;li>指针无须在定义时&lt;strong>初始化&lt;/strong>，引用必须初始化。&lt;/li>
+&lt;/ul>
+&lt;h4 id="获取对象的地址">获取对象的地址&lt;/h4>
+&lt;ul>
+&lt;li>取地址符&lt;code>&amp;amp;&lt;/code>：获取&lt;strong>对象的地址&lt;/strong>，保存在指针之中。&lt;/li>
+&lt;li>引用不是对象，所以&lt;strong>不可以定义指向引用的指针&lt;/strong>。&lt;/li>
+&lt;li>除了部分特例，&lt;strong>指针的类型需与其指向的对象严格匹配&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">double&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">double&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">pd1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 正确，初始化一个指向变量d的double型指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">double&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">pd2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pd1&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 正确，同样初始化一个指向变量d的指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">pi1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 错误，指针类型与所指向的对象不匹配
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="指针值">指针值&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>指针的值应属于下列4种状态之一：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>指向一个对象；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>指向紧邻对象所占空间的下一个位置；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>空指针：不指向任何对象；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>无效指针。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>试图拷贝或以其他方式访问&lt;strong>无效指针&lt;/strong>将引发错误，并且编译器不负责检查此类错误(即不会发出warning或者报错)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="利用指针访问对象">利用指针访问对象&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>解引用符&lt;code>*&lt;/code>&lt;/strong>：作用于指针，用以访问其&lt;strong>所指向的对象&lt;/strong>。&lt;/li>
+&lt;li>对指针解引用的结果进行赋值，本质上就是&lt;strong>对指针指向的对象赋值&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">42&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 等价于将变量i赋值为0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>解引用前必须确认该指针确实指向了一个对象。&lt;/li>
+&lt;/ul>
+&lt;h4 id="空指针">空指针&lt;/h4>
+&lt;ul>
+&lt;li>空指针不指向任何对象，在使用一个指针之前最好检查其是否为空指针。&lt;/li>
+&lt;li>生成空指针的若干方法：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 等价于 int *p1 = 0;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 必须是字面值常量0，不能是值为0的int型变量
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;cstdlib&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 等价于 int *p3 = 0;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>不能将int型变量直接赋值给指针，即便该变量的值为0。&lt;/li>
+&lt;/ul>
+&lt;h4 id="赋值和指针">赋值和指针&lt;/h4>
+&lt;ul>
+&lt;li>指针可以反复赋值，而引用则不行。&lt;/li>
+&lt;li>注意区分赋值时，等号左边的是指针所指向的对象还是指针自身。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">42&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 初始化整型指针p，将其置为空指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 将指针p赋值为i的地址，使其指向变量i
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 对指针p所指向的对象i进行赋值，等价于 i = 0;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 对指针p进行赋值，将其重置为空指针
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="其他指针操作">其他指针操作&lt;/h4>
+&lt;ul>
+&lt;li>如果指针的值是0(即空指针)，则其对应的条件值为&lt;code>false&lt;/code>，反之则为&lt;code>true&lt;/code>。&lt;/li>
+&lt;li>可以用相等操作符比较两个&lt;strong>类型相同的合法&lt;/strong>指针，比较的结果是布尔类型，比较的内容则是二者存放的地址。若两指针相等，则：
+&lt;ul>
+&lt;li>都为空指针；&lt;/li>
+&lt;li>指向同一个对象；&lt;/li>
+&lt;li>对象同一个对象的下一个地址；&lt;/li>
+&lt;li>(可能出现) 一个指针指向某对象，另一指针指向另一个对象的下一地址。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="void-指针">void* 指针&lt;/h4>
+&lt;ul>
+&lt;li>用于存放&lt;strong>任意对象的地址&lt;/strong>。&lt;/li>
+&lt;li>不能直接操作&lt;code>void*&lt;/code>指针所指向的对象，因不知其所指向的对象的类型。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">double&lt;/span> &lt;span class="n">obj&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">3.14&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">pd&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">pv&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 可以指向任意类型的对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">double&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">pv&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 不能直接打印pv的值，必须首先将其转化为固定类型的指针
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">pv&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">pd&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 可以指向任意类型的指针(指针自身也是一个对象)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">double&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">pv&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 双重指针可以两次解引用，结果为pd指向的变量obj(值为3.14)
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="理解复合类型的声明">理解复合类型的声明&lt;/h3>
+&lt;h4 id="定义多个变量">定义多个变量&lt;/h4>
+&lt;ul>
+&lt;li>变量的定义包含&lt;strong>一个基本数据类型&lt;/strong>和&lt;strong>一组声明符&lt;/strong>，即在一条语句中，&lt;strong>基本数据类型只有一个&lt;/strong>，但是声明符的形式可以不同。&lt;/li>
+&lt;li>&lt;strong>类型修饰符属于声明符的一部分&lt;/strong>，因此一条语句可以定义出不同类型的结果。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1024&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">r&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 其中(*p = &amp;amp;i)整体为一个声明符，(&amp;amp;r = i)为另一个，声明符之间用逗号隔开
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>指针和引用的声明有两种写法，一种是将修饰符与&lt;strong>变量&lt;/strong>写在一起，另一种是将修饰符与&lt;strong>类型名&lt;/strong>写在一起。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">p1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="指向指针的指针">指向指针的指针&lt;/h4>
+&lt;ul>
+&lt;li>指针修饰符可以&lt;strong>叠加&lt;/strong>，用以表示存放指针地址的指针，即&lt;strong>指向指针的指针&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1024&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">pp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 声明一个指向指针p的指针pp，通过pp指针访问i的值时，需要两次解引用**pp
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="指向指针的引用">指向指针的引用&lt;/h4>
+&lt;ul>
+&lt;li>指针是一个&lt;strong>对象&lt;/strong>，因此可以定义&lt;strong>对指针的引用&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">42&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="o">*&amp;amp;&lt;/span>&lt;span class="n">r&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 声明对指针p的引用
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">r&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 使得p指针指向i，等价于 p = &amp;amp;i;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">r&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 修改p指针指向对象的值，等价于 *p = 0;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">r&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 将指针p重置为空指针。
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>面对多重指针和引用的复合类型，可以&lt;strong>从右向左&lt;/strong>的阅读其修饰符列表，&lt;strong>距离变量名最近的修饰符&lt;/strong>对变量有&lt;strong>最直接的影响&lt;/strong>(若为&lt;code>&amp;amp;&lt;/code>则是引用，为&lt;code>*&lt;/code>就表示指针)，其余部分则用以&lt;strong>确定其指向/引用的类型&lt;/strong>。&lt;/li>
+&lt;/ul></description></item><item><title>2.2 变量</title><link>https://Soraruholic.github.io/p/cpp-11-primer-2-2/</link><pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/cpp-11-primer-2-2/</guid><description>&lt;img src="https://Soraruholic.github.io/p/cpp-11-primer-2-2/1.png" alt="Featured image of post 2.2 变量" />&lt;h2 id="变量">变量&lt;/h2>
+&lt;h3 id="变量定义">变量定义&lt;/h3>
+&lt;ul>
+&lt;li>基本形式：&lt;strong>类型说明符&lt;/strong> + [&lt;strong>变量名&lt;/strong>+&lt;strong>初始化&lt;/strong>(可选)] (一个或者多个，彼此之间用&lt;strong>逗号相隔&lt;/strong>)。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>CPP Primer此处对于变量定义的语法比较模棱两可，并未考虑复杂的情形，详细的变量声明的文法可见C++11的官方标准。&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="初始值">初始值&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>初始化&lt;/strong>：对象在创建的同时获得了特定的值(初始值)。&lt;/li>
+&lt;li>可以用任意复杂的&lt;strong>表达式&lt;/strong>作为初始值。&lt;/li>
+&lt;li>可以&lt;strong>迭代初始化&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">double&lt;/span> &lt;span class="n">price&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">1.14&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">discount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">514.&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">price&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>初始化不是赋值&lt;/strong>，后者需要先将对象的当前值擦除，而后用新值替代。&lt;/li>
+&lt;/ul>
+&lt;h4 id="列表初始化">列表初始化&lt;/h4>
+&lt;ul>
+&lt;li>多种初始化形式:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="nf">x&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 列表初始化
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>使用&lt;strong>列表初始化&lt;/strong>时，如果初始值存在&lt;strong>丢失信息&lt;/strong>的风险，则编译器将报错：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">long&lt;/span> &lt;span class="kt">double&lt;/span> &lt;span class="n">pi&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">3.1415926536&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="n">pi&lt;/span>&lt;span class="p">},&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="n">pi&lt;/span>&lt;span class="p">};&lt;/span> &lt;span class="c1">// 编译报错(也可能是Warning)，存在精度损失
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="nf">a&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pi&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pi&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 编译通过
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="默认初始化">默认初始化&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>内置类型&lt;/strong>若未被&lt;strong>显式初始化&lt;/strong>，
+&lt;ul>
+&lt;li>若其定义在&lt;strong>函数体内部&lt;/strong>，该变量不被初始化，其值是&lt;strong>未定义&lt;/strong>的；&lt;/li>
+&lt;li>否则，将被&lt;strong>初始化为0&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>每个类&lt;/strong>各自决定初始化对象的方式。&lt;/li>
+&lt;/ul>
+&lt;h3 id="变量声明与定义的关系">变量声明与定义的关系&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>分离式编译&lt;/strong>：将程序分割为若干个文件，使得每个文件可被独立编译。&lt;/li>
+&lt;li>为了支持分离式编译，C++将变量的&lt;strong>声明和定义区分&lt;/strong>，
+&lt;ul>
+&lt;li>&lt;strong>声明&lt;/strong>使得变量为程序所知，每个文件使用变量前必须&lt;strong>包含对其的声明&lt;/strong>；&lt;/li>
+&lt;li>&lt;strong>定义&lt;/strong>负责创建与变量相关的实体。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>若想在文件中声明一个变量，而该变量在其他文件中定义，可以在声明时加入关键字&lt;code>extern&lt;/code>，并且不进行显式初始化：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="k">extern&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="kt">double&lt;/span> &lt;span class="n">pi&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>如果使用&lt;code>extern&lt;/code>的同时对变量进行定义(初始化)，那么&lt;code>extern&lt;/code>关键字将失效，或者直接报错(对于同一变量的重复定义)。&lt;/li>
+&lt;li>变量&lt;strong>只能被定义一次&lt;/strong>，却可以&lt;strong>多次被声明&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;h3 id="标识符">标识符&lt;/h3>
+&lt;ul>
+&lt;li>标识符由&lt;strong>字符&lt;/strong>、&lt;strong>数字&lt;/strong>和&lt;strong>下划线&lt;/strong>，并且数字不能作为开头。&lt;/li>
+&lt;li>标识符没有长度限制，但是对&lt;strong>大小写敏感&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;h4 id="变量命名规范">变量命名规范&lt;/h4>
+&lt;ul>
+&lt;li>基本规范此处不做详述，选取最合适的现行规范使用即可。&lt;/li>
+&lt;li>用户自定义标识符&lt;strong>不连续出现两个下划线&lt;/strong>。&lt;/li>
+&lt;li>不以下划线紧连大写字母开头。&lt;/li>
+&lt;li>定义在函数体外的标识符不以下划线开头。&lt;/li>
+&lt;/ul>
+&lt;h3 id="名字的作用域">名字的作用域&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>变量的有效区域始于其声明语句，终结于声明语句所在的作用域末端。&lt;/strong>&lt;/li>
+&lt;li>大多是作用域&lt;strong>以花括号分隔&lt;/strong>。&lt;/li>
+&lt;li>&lt;strong>全局作用域&lt;/strong>：定义在函数体之外，一旦声明之后，全局作用域内的变量在整个程序范围内都可用。&lt;/li>
+&lt;li>&lt;strong>块作用域&lt;/strong>：仅在声明语句之后，且在声明语句的作用域内可用。&lt;/li>
+&lt;/ul>
+&lt;h4 id="嵌套的作用域">嵌套的作用域&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>外层作用域&lt;/strong>可以包含&lt;strong>内层作用域。&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Hello World</title><link>https://Soraruholic.github.io/p/hello-world/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/hello-world/</guid><description>&lt;img src="https://Soraruholic.github.io/p/hello-world/cover.jpg" alt="Featured image of post Hello World" />&lt;p>Welcome to Hugo theme Stack. This is your first post. Edit or delete it, then start writing!&lt;/p>
+&lt;p>For more information about this theme, check the documentation: &lt;a class="link" href="https://stack.jimmycai.com/" target="_blank" rel="noopener"
+>https://stack.jimmycai.com/&lt;/a>&lt;/p>
+&lt;p>Want a site like this? Check out &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack-starter" target="_blank" rel="noopener"
+>hugo-theme-stack-stater&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@pawel_czerwinski" target="_blank" rel="noopener"
+>Pawel Czerwinski&lt;/a> on &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Markdown Syntax Guide</title><link>https://Soraruholic.github.io/p/markdown-syntax-guide/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/markdown-syntax-guide/</guid><description>&lt;p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p>
+&lt;h2 id="headings">Headings&lt;/h2>
+&lt;p>The following HTML &lt;code>&amp;lt;h1&amp;gt;&lt;/code>—&lt;code>&amp;lt;h6&amp;gt;&lt;/code> elements represent six levels of section headings. &lt;code>&amp;lt;h1&amp;gt;&lt;/code> is the highest section level while &lt;code>&amp;lt;h6&amp;gt;&lt;/code> is the lowest.&lt;/p>
+&lt;h1 id="h1">H1&lt;/h1>
+&lt;h2 id="h2">H2&lt;/h2>
+&lt;h3 id="h3">H3&lt;/h3>
+&lt;h4 id="h4">H4&lt;/h4>
+&lt;h5 id="h5">H5&lt;/h5>
+&lt;h6 id="h6">H6&lt;/h6>
+&lt;h2 id="paragraph">Paragraph&lt;/h2>
+&lt;p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p>
+&lt;p>Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.&lt;/p>
+&lt;h2 id="blockquotes">Blockquotes&lt;/h2>
+&lt;p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a &lt;code>footer&lt;/code> or &lt;code>cite&lt;/code> element, and optionally with in-line changes such as annotations and abbreviations.&lt;/p>
+&lt;h3 id="blockquote-without-attribution">Blockquote without attribution&lt;/h3>
+&lt;blockquote>
+&lt;p>Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+&lt;strong>Note&lt;/strong> that you can use &lt;em>Markdown syntax&lt;/em> within a blockquote.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="blockquote-with-attribution">Blockquote with attribution&lt;/h3>
+&lt;blockquote>
+&lt;p>Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br>
+— &lt;cite>Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/cite>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="tables">Tables&lt;/h2>
+&lt;p>Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Name&lt;/th>
+&lt;th>Age&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Bob&lt;/td>
+&lt;td>27&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Alice&lt;/td>
+&lt;td>23&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="inline-markdown-within-tables">Inline Markdown within tables&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Italics&lt;/th>
+&lt;th>Bold&lt;/th>
+&lt;th>Code&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;em>italics&lt;/em>&lt;/td>
+&lt;td>&lt;strong>bold&lt;/strong>&lt;/td>
+&lt;td>&lt;code>code&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>A&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>C&lt;/th>
+&lt;th>D&lt;/th>
+&lt;th>E&lt;/th>
+&lt;th>F&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/td>
+&lt;td>Phasellus ultricies, sapien non euismod aliquam, dui ligula tincidunt odio, at accumsan nulla sapien eget ex.&lt;/td>
+&lt;td>Proin eleifend dictum ipsum, non euismod ipsum pulvinar et. Vivamus sollicitudin, quam in pulvinar aliquam, metus elit pretium purus&lt;/td>
+&lt;td>Proin sit amet velit nec enim imperdiet vehicula.&lt;/td>
+&lt;td>Ut bibendum vestibulum quam, eu egestas turpis gravida nec&lt;/td>
+&lt;td>Sed scelerisque nec turpis vel viverra. Vivamus vitae pretium sapien&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="code-blocks">Code Blocks&lt;/h2>
+&lt;h3 id="code-block-with-backticks">Code block with backticks&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;en&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">charset&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Example HTML5 Document&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Test&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">html&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="code-block-indented-with-four-spaces">Code block indented with four spaces&lt;/h3>
+&lt;pre>&lt;code>&amp;lt;!doctype html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;h3 id="diff-code-block">Diff code block&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-diff" data-lang="diff">&lt;span class="line">&lt;span class="cl">[dependencies.bevy]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git = &amp;#34;https://github.com/bevyengine/bevy&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rev = &amp;#34;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="gd">- features = [&amp;#34;dynamic&amp;#34;]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="gd">&lt;/span>&lt;span class="gi">+ features = [&amp;#34;jpeg&amp;#34;, &amp;#34;dynamic&amp;#34;]
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="one-line-code-block">One line code block&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>A paragraph&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="list-types">List Types&lt;/h2>
+&lt;h3 id="ordered-list">Ordered List&lt;/h3>
+&lt;ol>
+&lt;li>First item&lt;/li>
+&lt;li>Second item&lt;/li>
+&lt;li>Third item&lt;/li>
+&lt;/ol>
+&lt;h3 id="unordered-list">Unordered List&lt;/h3>
+&lt;ul>
+&lt;li>List item&lt;/li>
+&lt;li>Another item&lt;/li>
+&lt;li>And another item&lt;/li>
+&lt;/ul>
+&lt;h3 id="nested-list">Nested list&lt;/h3>
+&lt;ul>
+&lt;li>Fruit
+&lt;ul>
+&lt;li>Apple&lt;/li>
+&lt;li>Orange&lt;/li>
+&lt;li>Banana&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Dairy
+&lt;ul>
+&lt;li>Milk&lt;/li>
+&lt;li>Cheese&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="other-elements--abbr-sub-sup-kbd-mark">Other Elements — abbr, sub, sup, kbd, mark&lt;/h2>
+&lt;p>&lt;abbr title="Graphics Interchange Format">GIF&lt;/abbr> is a bitmap image format.&lt;/p>
+&lt;p>H&lt;sub>2&lt;/sub>O&lt;/p>
+&lt;p>X&lt;sup>n&lt;/sup> + Y&lt;sup>n&lt;/sup> = Z&lt;sup>n&lt;/sup>&lt;/p>
+&lt;p>Press &lt;kbd>CTRL&lt;/kbd> + &lt;kbd>ALT&lt;/kbd> + &lt;kbd>Delete&lt;/kbd> to end the session.&lt;/p>
+&lt;p>Most &lt;mark>salamanders&lt;/mark> are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>The above quote is excerpted from Rob Pike&amp;rsquo;s &lt;a class="link" href="https://www.youtube.com/watch?v=PAAkCSZUG1c" target="_blank" rel="noopener"
+>talk&lt;/a> during Gopherfest, November 18, 2015.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Image gallery</title><link>https://Soraruholic.github.io/p/image-gallery/</link><pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/image-gallery/</guid><description>&lt;img src="https://Soraruholic.github.io/p/image-gallery/2.jpg" alt="Featured image of post Image gallery" />&lt;p>Hugo theme Stack supports the creation of interactive image galleries using Markdown. It&amp;rsquo;s powered by &lt;a class="link" href="https://photoswipe.com/" target="_blank" rel="noopener"
+>PhotoSwipe&lt;/a> and its syntax was inspired by &lt;a class="link" href="https://typlog.com/" target="_blank" rel="noopener"
+>Typlog&lt;/a>.&lt;/p>
+&lt;p>To use this feature, the image must be in the same directory as the Markdown file, as it uses Hugo&amp;rsquo;s page bundle feature to read the dimensions of the image. &lt;strong>External images are not supported.&lt;/strong>&lt;/p>
+&lt;h2 id="syntax">Syntax&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">![&lt;span class="nt">Image 1&lt;/span>](&lt;span class="na">1.jpg&lt;/span>) ![&lt;span class="nt">Image 2&lt;/span>](&lt;span class="na">2.jpg&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="result">Result&lt;/h2>
+&lt;p>&lt;img src="https://Soraruholic.github.io/p/image-gallery/1.jpg"
+width="2000"
+height="1400"
+srcset="https://Soraruholic.github.io/p/image-gallery/1_hudd2e8259c20ed0dcaa856c253552e90f_14625_480x0_resize_q75_box.jpg 480w, https://Soraruholic.github.io/p/image-gallery/1_hudd2e8259c20ed0dcaa856c253552e90f_14625_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Image 1"
+class="gallery-image"
+data-flex-grow="142"
+data-flex-basis="342px"
+> &lt;img src="https://Soraruholic.github.io/p/image-gallery/2.jpg"
+width="1500"
+height="2250"
+srcset="https://Soraruholic.github.io/p/image-gallery/2_hubce42636ecacc1a380b462f3110efcec_37455_480x0_resize_q75_box.jpg 480w, https://Soraruholic.github.io/p/image-gallery/2_hubce42636ecacc1a380b462f3110efcec_37455_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Image 2"
+class="gallery-image"
+data-flex-grow="66"
+data-flex-basis="160px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@mymind" target="_blank" rel="noopener"
+>mymind&lt;/a> and &lt;a class="link" href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener"
+>Luke Chesser&lt;/a> on &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Shortcodes</title><link>https://Soraruholic.github.io/p/shortcodes/</link><pubDate>Fri, 25 Aug 2023 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/shortcodes/</guid><description>&lt;img src="https://Soraruholic.github.io/p/shortcodes/cover.jpg" alt="Featured image of post Shortcodes" />&lt;p>For more details, check out the &lt;a class="link" href="https://stack.jimmycai.com/writing/shortcodes" target="_blank" rel="noopener"
+>documentation&lt;/a>.&lt;/p>
+&lt;h2 id="bilibili-video">Bilibili video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1d4411N7zD"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="tencent-video">Tencent video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://v.qq.com/txp/iframe/player.html?vid=g0014r3khdw&amp;auto=0"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="youtube-video">YouTube video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/0qwALOOvUik"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="generic-video-file">Generic video file&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;video
+controls
+src="https://www.w3schools.com/tags/movie.mp4"
+>
+&lt;p>
+Your browser doesn't support HTML5 video. Here is a
+&lt;a href="https://www.w3schools.com/tags/movie.mp4">link to the video&lt;/a> instead.
+&lt;/p>
+&lt;/video>
+&lt;/div>
+&lt;h2 id="gist">Gist&lt;/h2>
+&lt;script src="https://gist.github.com/CaiJimmy/e2751a943de10b2a5b3a8a6c2120cb86.js">&lt;/script>
+&lt;h2 id="gitlab">GitLab&lt;/h2>
+&lt;script
+type="application/javascript"
+src="https://gitlab.com/-/snippets/2589724.js"
+>&lt;/script>
+&lt;h2 id="quote">Quote&lt;/h2>
+&lt;blockquote>
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p>&lt;span class="cite">&lt;span>― &lt;/span>&lt;span>A famous person, &lt;/span>&lt;a href="https://en.wikipedia.org/wiki/Book">&lt;cite>The book they wrote&lt;/cite>&lt;/a>&lt;/span>&lt;/blockquote>
+&lt;hr>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@codioful" target="_blank" rel="noopener"
+>Codioful&lt;/a> on &lt;a class="link" href="https://unsplash.com/photos/WDSN62Qdxuk" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Math Typesetting</title><link>https://Soraruholic.github.io/p/math-typesetting/</link><pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/p/math-typesetting/</guid><description>&lt;p>Stack has built-in support for math typesetting using &lt;a class="link" href="https://katex.org/" target="_blank" rel="noopener"
+>KaTeX&lt;/a>.&lt;/p>
+&lt;p>&lt;strong>It&amp;rsquo;s not enabled by default side-wide,&lt;/strong> but you can enable it for individual posts by adding &lt;code>math: true&lt;/code> to the front matter. Or you can enable it side-wide by adding &lt;code>math = true&lt;/code> to the &lt;code>params.article&lt;/code> section in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;h2 id="inline-math">Inline math&lt;/h2>
+&lt;p>This is an inline mathematical expression: $\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="block-math">Block math&lt;/h2>
+&lt;p>$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>$$
+f(x) = \int_{-\infty}^\infty\hat f(\xi),e^{2 \pi i \xi x},d\xi
+$$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Archives</title><link>https://Soraruholic.github.io/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/archives/</guid><description/></item><item><title>Links</title><link>https://Soraruholic.github.io/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/links/</guid><description>&lt;p>To use this feature, add &lt;code>links&lt;/code> section to frontmatter.&lt;/p>
+&lt;p>This page&amp;rsquo;s frontmatter:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">links&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub is the world&amp;#39;s largest software development platform.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.com&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://www.typescriptlang.org&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ts-logo-128.jpg&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>image&lt;/code> field accepts both local and external images.&lt;/p></description></item><item><title>Search</title><link>https://Soraruholic.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Soraruholic.github.io/search/</guid><description/></item></channel></rss>
